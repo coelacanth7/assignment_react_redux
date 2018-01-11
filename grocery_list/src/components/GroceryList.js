@@ -5,8 +5,8 @@ const GroceryList = ({ groceries, purchaseItem }) => {
 	const groceryList = groceries.map((grocery, index) => (
 		<GroceryListItem
 			grocery={grocery}
-			key={grocery.id}
 			onPurchaseClick={() => purchaseItem(grocery.id)}
+			key={grocery.id}
 		/>
 	));
 
