@@ -14,17 +14,20 @@ const groceriesFromServer = [
 	{
 		item: "beans",
 		quantity: 3,
-		purchased: false
+		purchased: false,
+		id: 1
 	},
 	{
 		item: "lays potato chips",
 		quantity: 1,
-		purchased: false
+		purchased: false,
+		id: 2
 	},
 	{
 		item: "covfefe",
 		quantity: 1,
-		purchased: false
+		purchased: false,
+		id: 3
 	}
 ];
 

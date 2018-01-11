@@ -8,7 +8,8 @@ export function addToList(data) {
 		type: ADD_TO_LIST,
 		data: {
 			...data,
-			id: nextItemId++
+			id: nextItemId++,
+			purchased: false
 		}
 	};
 }
