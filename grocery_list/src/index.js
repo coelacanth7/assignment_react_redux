@@ -8,7 +8,6 @@ import registerServiceWorker from "./registerServiceWorker";
 
 import { createStore } from "redux";
 import { groceryAPP } from "./reducers";
-import { addToList, purchaseItem, showPurchasedItems } from "./actions";
 
 const groceriesFromServer = [
 	{
