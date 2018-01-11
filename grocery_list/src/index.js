@@ -1,44 +1,39 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import "bootstrap/dist/css/bootstrap.css";
 import "./index.css";
-import App from "./App";
+import App from "./components/App";
 import registerServiceWorker from "./registerServiceWorker";
 
 import { createStore } from "redux";
-
 import { groceryAPP } from "./reducers";
-
 import { addToList, purchaseItem, showPurchasedItems } from "./actions";
 
-let store = createStore(groceryAPP);
-
-let unsubscribe = store.subscribe(() => console.log(store.getState()));
-
-console.log("initial state", store.getState());
-
-store.dispatch(
-	addToList({
+const groceriesFromServer = [
+	{
 		item: "beans",
 		quantity: 3,
 		purchased: false
-	})
-);
-
-store.dispatch(
-	addToList({
+	},
+	{
 		item: "lays potato chips",
 		quantity: 1,
 		purchased: false
-	})
+	},
+	{
+		item: "covfefe",
+		quantity: 1,
+		purchased: false
+	}
+];
+
+let store = createStore(groceryAPP, { groceries: groceriesFromServer });
+
+ReactDOM.render(
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.getElementById("root")
 );
-
-// console.log("new state", store.getState());
-
-store.dispatch(purchaseItem(2));
-
-store.dispatch(showPurchasedItems("SHOW_PURCHASED_ITEMS"));
-
-unsubscribe();
-
-ReactDOM.render(<App />, document.getElementById("root"));
 registerServiceWorker();
