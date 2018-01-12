@@ -21,7 +21,6 @@ function bankReducer(state = thatState, action) {
 				accounts: [...state.accounts, action.data],
 				transactions: [...state.transactions]
 			};
-			break;
 		case VIEW_ACCOUNT:
 			return {
 				accounts: [...state.accounts],
@@ -32,13 +31,14 @@ function bankReducer(state = thatState, action) {
 				}),
 				transactions: [...state.transactions]
 			};
-
-			break;
 		case DEPOSIT:
 			return {
 				accounts: state.accounts.map(account => {
 					if (account.id === action.data.accountID) {
-						account.money += action.data.money;
+						return {
+							...account,
+							money: account.money + action.data.money
+						};
 					}
 
 					return account;
@@ -46,12 +46,14 @@ function bankReducer(state = thatState, action) {
 				selectedAccount: { ...state.selectedAccount },
 				transactions: [...state.transactions, action.data]
 			};
-			break;
 		case WITHDRAW:
 			return {
 				accounts: state.accounts.map(account => {
 					if (account.id === action.data.accountID) {
-						account.money -= action.data.money;
+						return {
+							...account,
+							money: account.money - action.data.money
+						};
 					}
 
 					return account;
@@ -59,16 +61,21 @@ function bankReducer(state = thatState, action) {
 				selectedAccount: { ...state.selectedAccount },
 				transactions: [...state.transactions, action.data]
 			};
-			break;
 		case TRANSFER:
 			return {
 				accounts: state.accounts.map(account => {
 					if (account.id === action.data.fromAccountID) {
-						account.money -= action.data.money;
+						return {
+							...account,
+							money: account.money - action.data.money
+						};
 					}
 
 					if (account.id === action.data.toAccountID) {
-						account.money += action.data.money;
+						return {
+							...account,
+							money: account.money + action.data.money
+						};
 					}
 
 					return account;
@@ -76,15 +83,15 @@ function bankReducer(state = thatState, action) {
 				selectedAccount: { ...state.selectedAccount },
 				transactions: [...state.transactions, action.data]
 			};
-			break;
 		case SORT:
 			return {
 				accounts: [...state.accounts],
 				selectedAccount: { ...state.selectedAccount },
 				transactions: [...state.transactions],
-				sortedTransacitons: state.transactions.sort((a, b) => a.time - b.time)
+				sortedTransacitons: state.transactions
+					.slice()
+					.sort((a, b) => a.time - b.time)
 			};
-			break;
 		default:
 			return thatState;
 	}
