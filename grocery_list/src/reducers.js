@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import { ADD_TO_LIST, PURCHASE_ITEM, SHOW_PURCHASED_ITEMS } from "./actions";
+import { ADD_TO_LIST, PURCHASE_ITEM, SET_AVAILABILITY_FILTER } from "./actions";
 
 function groceries(state = [], action) {
 	switch (action.type) {
@@ -24,9 +24,9 @@ function groceries(state = [], action) {
 	}
 }
 
-function showPurchases(state = "SHOW_ALL", action) {
+function groceryFilters(state = "SHOW_ALL", action) {
 	switch (action.type) {
-		case SHOW_PURCHASED_ITEMS:
+		case SET_AVAILABILITY_FILTER:
 			return action.data;
 			break;
 		default:
@@ -34,4 +34,4 @@ function showPurchases(state = "SHOW_ALL", action) {
 	}
 }
 
-export const groceryAPP = combineReducers({ groceries, showPurchases });
+export const groceryAPP = combineReducers({ groceries, groceryFilters });

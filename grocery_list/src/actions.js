@@ -1,6 +1,6 @@
 export const ADD_TO_LIST = "ADD_TO_LIST";
 export const PURCHASE_ITEM = "PURCHASE_ITEM";
-export const SHOW_PURCHASED_ITEMS = "SHOW_PURCHASED_ITEMS";
+export const SET_AVAILABILITY_FILTER = "SET_AVAILABILITY_FILTER";
 
 let nextItemId = 4;
 export function addToList(data) {
@@ -21,9 +21,9 @@ export function purchaseItem(id) {
 	};
 }
 
-export function showPurchasedItems(data) {
+export function setAvailabilityFilter(data) {
 	return {
-		type: SHOW_PURCHASED_ITEMS,
+		type: SET_AVAILABILITY_FILTER,
 		data
 	};
 }

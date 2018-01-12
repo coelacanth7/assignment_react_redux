@@ -1,5 +1,6 @@
 import React from "react";
 import GroceryListItem from "./GroceryListItem";
+import Filters from "./Filters";
 
 const GroceryList = ({ groceries, purchaseItem }) => {
 	const groceryList = groceries.map((grocery, index) => (
@@ -10,18 +11,18 @@ const GroceryList = ({ groceries, purchaseItem }) => {
 		/>
 	));
 
-	const noGroceries = <p className="text-muted">Oops no groceries...</p>;
+	const noGroceries = (
+		<li className="list-group-item text-muted">Oops no groceries...</li>
+	);
 
 	return (
 		<div className="container-fluid">
 			<h1>The List</h1>
-			{/* <Filters /> */}
+			<Filters />
 			<div>
-				{groceries.length > 0 ? (
-					<ul className="list-group">{groceryList} </ul>
-				) : (
-					{ noGroceries }
-				)}
+				<ul className="list-group">
+					{groceries.length > 0 ? groceryList : noGroceries}
+				</ul>
 			</div>
 		</div>
 	);

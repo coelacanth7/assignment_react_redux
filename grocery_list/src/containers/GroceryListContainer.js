@@ -6,10 +6,10 @@ const getVisibleGroceries = (groceries, filter) => {
 	switch (filter) {
 		case "SHOW_ALL":
 			return groceries;
-		case "SHOW_AVAILABLE":
-			return groceries.filter(grocery => grocery.available);
-		case "SHOW_ADOPTED":
-			return groceries.filter(grocery => !grocery.available);
+		case "SHOW_PURCHASED":
+			return groceries.filter(grocery => grocery.purchased);
+		case "SHOW_NOT_PURCHASED":
+			return groceries.filter(grocery => !grocery.purchased);
 		default:
 			return groceries;
 	}
