@@ -24,11 +24,11 @@ function bankReducer(state = thatState, action) {
 		case VIEW_ACCOUNT:
 			return {
 				accounts: [...state.accounts],
-				selectedAccount: state.accounts.map(account => {
+				selectedAccount: state.accounts.filter(account => {
 					if (account.id === action.data) {
 						return account;
 					}
-				}),
+				})[0],
 				transactions: [...state.transactions]
 			};
 		case DEPOSIT:
