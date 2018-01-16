@@ -8,7 +8,11 @@ import {
 } from "./actions";
 
 const thatState = {
-	accounts: [],
+	accounts: [
+		{ id: 1, name: "greg", money: 500 },
+		{ id: 2, name: "jake", money: 499 },
+		{ id: 3, name: "bill", money: 498 }
+	],
 	selectedAccount: {},
 	transactions: [],
 	sortedTransacitons: []
