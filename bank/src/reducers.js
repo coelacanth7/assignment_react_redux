@@ -30,7 +30,7 @@ function bankReducer(state = thatState, action) {
 				accounts: [...state.accounts],
 				selectedAccount: state.accounts.filter(account => {
 					if (account.id === action.data) {
-						return account;
+						return { ...account };
 					}
 				})[0],
 				transactions: [...state.transactions]

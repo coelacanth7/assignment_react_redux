@@ -9,14 +9,11 @@ import registerServiceWorker from "./registerServiceWorker";
 import { createStore } from "redux";
 import bankReducer from "./reducers";
 
-const accountsFromServer = {
-	accounts: [],
-	selectedAccount: {},
-	transactions: [],
-	sortedTransacitons: []
-};
+import { deposit } from "./actions";
 
-let store = createStore(bankReducer);
+const store = createStore(bankReducer);
+store.dispatch(deposit({ accountID: 1, money: 100 }));
+
 // console.log(store.getState());
 
 ReactDOM.render(

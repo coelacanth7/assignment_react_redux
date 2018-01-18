@@ -3,14 +3,13 @@ import { viewAccount } from "../actions";
 import AccountList from "../components/AccountList";
 
 const mapStateToProps = state => {
-	console.log(state);
 	return { accounts: state.accounts };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		viewAccount: id => {
-			viewAccount(id);
+			dispatch(viewAccount(id));
 		}
 	};
 };
